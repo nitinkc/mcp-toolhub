@@ -1,0 +1,123 @@
+site_name: MCP ToolHub
+site_description: A learning-focused MCP server showcasing Tools, Prompts, and Resources
+site_url: https://YOUR_USERNAME.github.io/mcp-toolhub
+repo_url: https://github.com/YOUR_USERNAME/mcp-toolhub
+repo_name: YOUR_USERNAME/mcp-toolhub
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: deep orange
+      accent: orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: deep orange
+      accent: orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
+    logo: material/robot
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - search.highlight
+    - search.share
+    - search.suggest
+    - content.code.copy
+    - content.code.annotate
+    - toc.follow
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - tables
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+  - tags
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/YOUR_USERNAME/mcp-toolhub
+  analytics:
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: Thanks for letting us know!
+
+nav:
+  - Home: index.md
+  - Quick Start: quickstart.md
+  - Tools:
+      - Overview: tools/index.md
+      - Basic Tools: tools/basic.md
+      - Data & API Tools: tools/data-api.md
+      - Memory & Storage: tools/memory-storage.md
+      - Screenshot: tools/screenshot.md
+  - Prompts:
+      - Overview: prompts/index.md
+      - Built-in Prompts: prompts/builtin.md
+  - Resources:
+      - Overview: resources/index.md
+  - 💬 Chat Prompt Recipes:
+      - Overview: prompts-library/index.md
+      - 🧪 Test All Tools: prompts-library/test-all-tools.md
+      - 🧠 Memory Workflows: prompts-library/memory-workflows.md
+      - 🔍 Research & Search: prompts-library/research-search.md
+      - 🖥️ Screen & Visual: prompts-library/screen-visual.md
+      - 🎓 Learning Scenarios: prompts-library/learning-scenarios.md
+  - Deployment: deployment.md
+

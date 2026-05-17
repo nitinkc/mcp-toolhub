@@ -1,0 +1,28 @@
+[project]
+name = "mcp-toolhub"
+version = "0.1.0"
+description = "MCP ToolHub – a learning-focused MCP server showcasing tools, prompts, and resources"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp[cli]>=1.9.0",
+    "openai>=1.30.0",
+    "python-dotenv>=1.0.0",
+    "requests>=2.31.0",
+    "pyautogui>=0.9.54",
+    "pyscreeze>=0.1.30",
+    "Pillow>=10.0.0",
+    "pydantic>=2.0.0",
+]
+
+[project.scripts]
+mcp-toolhub = "mcpserver.__main__:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["mcpserver*"]
+
