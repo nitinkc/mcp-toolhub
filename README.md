@@ -187,5 +187,5 @@ mkdocs gh-deploy --force
 
 Typical Pages URL after deploy:
 
-- `https://YOUR_USERNAME.github.io/mcp-toolhub/`
+- `https://nitinkc.github.io/mcp-toolhub/`
 
