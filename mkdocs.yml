@@ -84,7 +84,7 @@ plugins:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/YOUR_USERNAME/mcp-toolhub
+      link: https://github.com/nitinkc/mcp-toolhub
   analytics:
     feedback:
       title: Was this page helpful?
@@ -119,5 +119,3 @@ nav:
       - 🔍 Research & Search: prompts-library/research-search.md
       - 🖥️ Screen & Visual: prompts-library/screen-visual.md
       - 🎓 Learning Scenarios: prompts-library/learning-scenarios.md
-  - Deployment: deployment.md
-
