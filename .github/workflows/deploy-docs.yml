@@ -3,78 +3,61 @@ name: Deploy MkDocs to GitHub Pages
 on:
   push:
     branches:
-      - main        # trigger on every push to main
-  workflow_dispatch:  # allow manual trigger from GitHub UI
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write       # needed to deploy to GitHub Pages
-  id-token: write    # needed for OIDC token (trusted deploy)
+  pages: write
+  id-token: write
 
-# Only allow one deployment at a time
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
-
-  # ─────────────────────────────────────────
-  # Stage 1 — Build
-  # ─────────────────────────────────────────
   build:
-    name: 🔨 Build MkDocs Site
+    name: Build MkDocs site
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: '3.12'
 
       - name: Cache pip dependencies
         uses: actions/cache@v4
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements-docs.txt', 'mkdocs.yml') }}
           restore-keys: |
             ${{ runner.os }}-pip-
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Debug — print versions & theme
+      - name: Install docs dependencies
         run: |
-          mkdocs --version
-          python -c "import mkdocs; print('mkdocs path:', mkdocs.__file__)"
-          python -c "import mkdocs.config.defaults as d; print('theme entry points available')"
-          pip list | grep -iE "mkdocs|material|bootswatch"
+          python -m pip install --upgrade pip
+          pip install -r requirements-docs.txt
 
       - name: Build MkDocs site
         run: mkdocs build --clean
-        # --strict removed: avoids version-sensitive warning→error differences between local and CI
-        # Output goes to ./site/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: site/   # upload the built site for the deploy stage
+          path: site/
 
-  # ─────────────────────────────────────────
-  # Stage 2 — Deploy
-  # ─────────────────────────────────────────
   deploy:
-    name: 🚀 Deploy to GitHub Pages
+    name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
-    needs: build       # only runs if build succeeds
+    needs: build
 
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}  # GitHub sets this automatically
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Deploy to GitHub Pages
@@ -83,7 +66,5 @@ jobs:
 
       - name: Print live site URL
         run: |
-          echo "━━━━━━━━━��━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-          echo "  ✅ Deployment complete!"
-          echo "  🌐 Live URL: ${{ steps.deployment.outputs.page_url }}"
-          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "Deployment complete"
+          echo "Live URL: ${{ steps.deployment.outputs.page_url }}"

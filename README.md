@@ -155,7 +155,7 @@ Every function has a Google-style docstring so the LLM can understand and invoke
 ```shell
 # from project root
 source .venv/bin/activate
-uv pip install mkdocs mkdocs-material
+uv pip install -r requirements-docs.txt
 ```
 
 ### 2) Run docs locally (hot reload)
@@ -188,4 +188,3 @@ mkdocs gh-deploy --force
 Typical Pages URL after deploy:
 
 - `https://nitinkc.github.io/mcp-toolhub/`
-
