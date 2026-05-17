@@ -93,6 +93,42 @@ Open the Inspector UI at **http://localhost:5173** to test all tools, prompts, a
     }
     ```
 
+```shell
+ uvx --from git+https://github.com/nitinkc/mcp-toolhub.git mcp-toolhub
+```
+
+=== "Side-by-side (local + GitHub)"
+
+    ```json
+    {
+      "mcpServers": {
+        "mcp-toolhub-local": {
+          "command": "/absolute/path/to/mcp-toolhub/.venv/bin/mcp",
+          "args": [
+            "run",
+            "/absolute/path/to/mcp-toolhub/mcpserver/myMcpServer.py"
+          ],
+          "env": {
+            "VIRTUAL_ENV": ""
+          }
+        },
+        "mcp-toolhub-github": {
+          "command": "uvx",
+          "args": [
+            "--from",
+            "git+https://github.com/nitinkc/mcp-toolhub.git",
+            "mcp-toolhub"
+          ],
+          "env": {
+            "OPENAI_API_KEY": "sk-...",
+            "WEB_SEARCH_PROVIDER": "perplexity",
+            "WEB_SEARCH_API_KEY": "pplx-..."
+          }
+        }
+      }
+    }
+    ```
+
 !!! tip "Restart Claude Desktop after editing the config"
     Claude Desktop reads the config file on startup — always restart after making changes.
 

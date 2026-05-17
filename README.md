@@ -108,6 +108,44 @@ Or install directly from a Git repository:
 }
 ```
 
+### Local and GitHub side-by-side (recommended for comparison)
+
+```shell
+ uvx --from git+https://github.com/nitinkc/mcp-toolhub.git mcp-toolhub
+```
+
+```json
+{
+  "mcpServers": {
+    "mcp-toolhub-local": {
+      "command": "/absolute/path/to/mcp-toolhub/.venv/bin/mcp",
+      "args": [
+        "run",
+        "/absolute/path/to/mcp-toolhub/mcpserver/myMcpServer.py"
+      ],
+      "env": {
+        "VIRTUAL_ENV": ""
+      }
+    },
+    "mcp-toolhub-github": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/nitinkc/mcp-toolhub.git",
+        "mcp-toolhub"
+      ],
+      "env": {
+        "OPENAI_API_KEY": "your_openai_api_key",
+        "WEB_SEARCH_PROVIDER": "perplexity",
+        "WEB_SEARCH_API_KEY": "your_perplexity_api_key"
+      }
+    }
+  }
+}
+```
+
+Use `mcp-toolhub-local` while developing locally, and `mcp-toolhub-github` when sharing a portable config.
+
 ---
 
 ## Install into VS Code (GitHub Copilot)
