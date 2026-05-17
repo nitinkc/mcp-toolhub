@@ -1,8 +1,8 @@
 site_name: MCP ToolHub
 site_description: A learning-focused MCP server showcasing Tools, Prompts, and Resources
-site_url: https://YOUR_USERNAME.github.io/mcp-toolhub
-repo_url: https://github.com/YOUR_USERNAME/mcp-toolhub
-repo_name: YOUR_USERNAME/mcp-toolhub
+site_url: https://nitinkc.github.io/mcp-toolhub
+repo_url: https://github.com/nitinkc/mcp-toolhub
+repo_name: nitinkc/mcp-toolhub
 edit_uri: edit/main/docs/
 
 theme:
